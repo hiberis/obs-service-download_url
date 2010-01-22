@@ -11,7 +11,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-iii
+This is a source service for openSUSE Build Service.
+
+It supports downloading files from given URLs via curl
 
 %prep
 %setup -q -D -T 0 -n .
