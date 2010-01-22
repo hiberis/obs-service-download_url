@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Just the very first example OBS service, written by adrian
+# we should build a bash lib for some of this stuff
+
+# defaults
+PROTOCOL="http"
+PORT=""
+
+while test $# -gt 0; do
+  case $1 in
+    *-host)
+      HOST="$2"
+      shift
+    ;;
+    *-port)
+      PORT=":$2"
+      shift
+    ;;
+    *-protocol)
+      PROTOCOL="$2"
+      shift
+    ;;
+    *-path)
+      PATH="$2"
+      shift
+    ;;
+    *-outdir)
+      OUTDIR="$2"
+      shift
+    ;;
+    *)
+      echo Unknown parameter $1.
+      echo 'Usage: http_download --host $HOST --path $PATH --outdir $OUT'
+      exit 1
+    ;;
+  esac
+  shift
+done
+
+FILE="${PATH##*/}"
+
+if [ -z "$HOST" ]; then
+  echo "ERROR: no hostname is given via --host parameter!"
+  exit 1
+fi
+if [ -z "$PATH" ]; then
+  echo "ERROR: no path is given via --path parameter!"
+  exit 1
+fi
+if [ -z "$OUTDIR" ]; then
+  echo "ERROR: no output directory is given via --outdir parameter!"
+  exit 1
+fi
+if [ -z "$FILE" ]; then
+  echo "ERROR: no file name was stripped from $PATH"
+  exit 1
+fi
+
+exec /usr/bin/curl -q -o "$OUTDIR/$FILE" "$PROTOCOL://${HOST}${PORT}/$PATH"
+
