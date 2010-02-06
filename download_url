@@ -57,5 +57,5 @@ if [ -z "$FILE" ]; then
   exit 1
 fi
 
-exec /usr/bin/curl -q -o "$OUTDIR/$FILE" "$PROTOCOL://${HOST}${PORT}/$PATH"
+exec /usr/bin/wget -q -O "$OUTDIR/$FILE" "$PROTOCOL://${HOST}${PORT}/$PATH"
 

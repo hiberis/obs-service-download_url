@@ -6,7 +6,7 @@ Summary:        An OBS source service: curl download tool
 Version:        0.1
 Release:        1
 Source:         download_url
-Requires:       /usr/bin/curl
+Requires:       wget
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
