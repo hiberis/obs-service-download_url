@@ -57,5 +57,6 @@ if [ -z "$FILE" ]; then
   exit 1
 fi
 
-exec /usr/bin/wget -q -O "$OUTDIR/$FILE" "$PROTOCOL://${HOST}${PORT}/$PATH"
+cd "$OUTDIR"
+exec /usr/bin/wget -q "$PROTOCOL://${HOST}${PORT}/$PATH"
 
