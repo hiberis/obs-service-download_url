@@ -4,29 +4,30 @@
 # we should build a bash lib for some of this stuff
 
 # defaults
-PROTOCOL="http"
-PORT=""
+MYPROTOCOL="http"
+MYHOST=""
+MYPORT=""
 
 while test $# -gt 0; do
   case $1 in
     *-host)
-      HOST="$2"
+      MYHOST="$2"
       shift
     ;;
     *-port)
-      PORT=":$2"
+      MYPORT=":$2"
       shift
     ;;
     *-protocol)
-      PROTOCOL="$2"
+      MYPROTOCOL="$2"
       shift
     ;;
     *-path)
-      PATH="$2"
+      MYPATH="$2"
       shift
     ;;
     *-outdir)
-      OUTDIR="$2"
+      MYOUTDIR="$2"
       shift
     ;;
     *)
@@ -40,23 +41,23 @@ done
 
 FILE="${PATH##*/}"
 
-if [ -z "$HOST" ]; then
+if [ -z "$MYHOST" ]; then
   echo "ERROR: no hostname is given via --host parameter!"
   exit 1
 fi
-if [ -z "$PATH" ]; then
+if [ -z "$MYPATH" ]; then
   echo "ERROR: no path is given via --path parameter!"
   exit 1
 fi
-if [ -z "$OUTDIR" ]; then
+if [ -z "$MYOUTDIR" ]; then
   echo "ERROR: no output directory is given via --outdir parameter!"
   exit 1
 fi
 if [ -z "$FILE" ]; then
-  echo "ERROR: no file name was stripped from $PATH"
+  echo "ERROR: no file name was stripped from $MYPATH"
   exit 1
 fi
 
-cd "$OUTDIR"
-exec /usr/bin/wget -q "$PROTOCOL://${HOST}${PORT}/$PATH"
+cd "$MYOUTDIR"
+exec /usr/bin/wget -q "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
 
