@@ -23,7 +23,7 @@ while test $# -gt 0; do
       shift
     ;;
     *-path)
-      MYPATH="$2"
+      MYPATH="${2#/}"
       shift
     ;;
     *-outdir)
