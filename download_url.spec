@@ -6,6 +6,7 @@ Summary:        An OBS source service: curl download tool
 Version:        0.1
 Release:        1
 Source:         download_url
+Source1:        download_url.service
 Requires:       wget
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -24,6 +25,7 @@ It supports downloading files from given URLs via curl
 %install
 mkdir -p $RPM_BUILD_ROOT/usr/lib/obs/service
 install -m 0755 %{SOURCE0} $RPM_BUILD_ROOT/usr/lib/obs/service
+install -m 0644 %{SOURCE1} $RPM_BUILD_ROOT/usr/lib/obs/service
 
 %files
 %defattr(-,root,root)

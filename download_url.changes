@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:49:31 UTC 2010 - adrian@suse.de
+
+- added service file as needed for OBS 2.1
+
+-------------------------------------------------------------------
 Fri Jan 22 07:45:42 UTC 2010 - adrian@suse.de
 
 - initial version for supporting server side file downloads via curl
