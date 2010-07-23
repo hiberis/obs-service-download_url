@@ -1,5 +1,5 @@
 <service name="download_url">
-  <summary>Downloads a File</summary>
+  <summary>Download a file</summary>
   <description>This service uses curl to download files from remote servers via supported protocols.</description>
   <parameter name="protocol">
     <description>Used Protocol</description>
