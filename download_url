@@ -59,5 +59,7 @@ if [ -z "$FILE" ]; then
 fi
 
 cd "$MYOUTDIR"
-exec /usr/bin/wget -4 -q "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
+# yes, not nice, but too many broken servers out there who either break with IPv6 or have broken certificates :/
+# let's use verify service to validate the downloaded source
+exec /usr/bin/wget -4 --no-check-certificate -q "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
 
