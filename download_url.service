@@ -18,5 +18,8 @@
     <description>Path to the file</description>
     <required/>
   </parameter>
+  <parameter name="filename">
+    <description>Stored with this file name. Otherwise with the file name as reported by the server.</description>
+  </parameter>
 </service>
 

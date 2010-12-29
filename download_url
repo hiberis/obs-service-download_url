@@ -26,6 +26,10 @@ while test $# -gt 0; do
       MYPATH="${2#/}"
       shift
     ;;
+    *-filename)
+      MYFILENAME="${2#/}"
+      shift
+    ;;
     *-outdir)
       MYOUTDIR="$2"
       shift
@@ -39,7 +43,7 @@ while test $# -gt 0; do
   shift
 done
 
-FILE="${PATH##*/}"
+FILE="${MYPATH##*/}"
 
 if [ -z "$MYHOST" ]; then
   echo "ERROR: no hostname is given via --host parameter!"
@@ -61,5 +65,9 @@ fi
 cd "$MYOUTDIR"
 # yes, not nice, but too many broken servers out there who either break with IPv6 or have broken certificates :/
 # let's use verify service to validate the downloaded source
-exec /usr/bin/wget -4 --no-check-certificate -q "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
+if [ -n "$MYFILENAME" ]; then
+  exec /usr/bin/wget -4 --no-check-certificate -q -O "$MYFILENAME" "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
+else
+  exec /usr/bin/wget -4 --no-check-certificate -q "$MYPROTOCOL://${MYHOST}${MYPORT}/$MYPATH"
+fi
 

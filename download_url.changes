@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 29 13:47:57 UTC 2010 - adrian@suse.de
+
+- add option to specify the output file name
+
+-------------------------------------------------------------------
 Fri Jul 23 07:49:31 UTC 2010 - adrian@suse.de
 
 - added service file as needed for OBS 2.1
