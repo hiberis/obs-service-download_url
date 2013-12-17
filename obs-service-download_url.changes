@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:57:29 UTC 2013 - speilicke@suse.com
+
+- Factory prep: Fix spec/changes file naming, cleanup
+
+-------------------------------------------------------------------
 Wed Dec 29 13:47:57 UTC 2010 - adrian@suse.de
 
 - add option to specify the output file name

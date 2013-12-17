@@ -1,7 +1,7 @@
 #
-# spec file for package download_url
+# spec file for package obs-service-download_url
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@ Name:           obs-service-download_url
 Summary:        An OBS source service: curl download tool
 License:        GPL-2.0+
 Group:          Development/Tools/Building
+Url:            http://openbuildservice.org
 Version:        0.1
 Release:        0
 Source:         download_url
@@ -39,13 +40,13 @@ It supports downloading files from given URLs via curl
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/lib/obs/service
-install -m 0755 %{SOURCE0} $RPM_BUILD_ROOT/usr/lib/obs/service
-install -m 0644 %{SOURCE1} $RPM_BUILD_ROOT/usr/lib/obs/service
+mkdir -p %{buildroot}/usr/lib/obs/service
+install -m 0755 %{SOURCE0} %{buildroot}/usr/lib/obs/service
+install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/obs/service
 
 %files
 %defattr(-,root,root)
-%dir /usr/lib/obs
-/usr/lib/obs/service
+%dir %{_prefix}/lib/obs
+%{_prefix}/lib/obs/service
 
 %changelog
